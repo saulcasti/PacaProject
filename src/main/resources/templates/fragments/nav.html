@@ -17,13 +17,12 @@
 						Gestión de notas <span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu">
-						<li sec:authorize="hasRole('ROLE_PROFESSOR')"><a
+						<li ><a
 							href="/mark/add" th:text="#{addMarks.message}"></a></li>
 						<li><a href="/mark/list" th:text="#{showMarks.message}"></a></li>
 					</ul></li>
 
-				<li id="users-menu" class="dropdown"
-					sec:authorize="hasRole('ROLE_ADMIN')"><a
+				<li id="users-menu" class="dropdown"><a
 					class="dropdown-toggle" data-toggle="dropdown" href="#"
 					th:text="#{userManagement.message}"> <span class="caret"></span>
 				</a>

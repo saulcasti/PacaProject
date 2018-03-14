@@ -8,13 +8,11 @@
 		<h3 th:text="#{privateZone.message}">Esta es una zona privada de la web</h3>
 		<p th:text="#{authenticationUser.message}">
 			Usuario Autenticado como : 
-			<b sec:authentication="principal.username"
-				th:inline="text"></b>
-			<!--  <b th:inline="text">
+		
+			 <b th:inline="text">
 				[[${#httpServletRequest.remoteUser}]] </b>
-				-->
+				
 		</p>
-		<p th:text="#{userPosts.message}">Publicaciones del usuario</p>
 		
 	</div>
 	<footer th:replace="fragments/footer" />
