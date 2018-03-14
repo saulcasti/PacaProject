@@ -59,7 +59,7 @@ public class UsersService {
 	public Page<User> searchUsersByDNIAndName(Pageable pageable, String searchText){ 
 		Page<User> users = new PageImpl<User>(new LinkedList<User>());
 		searchText = "%"+searchText+"%";
-		users = usersRepository.searchByDNIAndName(pageable, searchText); 
+		users = usersRepository.searchByEmailAndName(pageable, searchText); 
 		return users;
 	}
 	

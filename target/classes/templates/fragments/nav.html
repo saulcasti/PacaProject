@@ -12,6 +12,9 @@
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
 				<li><a href="/">Home</a></li>
+				
+				<li><a href="/user/list" sec:authorize="isAuthenticated()" 
+				 th:text="#{nav.user.list}">Listado de usuarios</a></li>
 
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
