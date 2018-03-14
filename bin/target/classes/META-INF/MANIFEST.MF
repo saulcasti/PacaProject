@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: Notaneitor
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: saul
+Built-By: Pelayo Dￃﾭaz Soto
 Implementation-Vendor-Id: com.uniovi
-Build-Jdk: 1.8.0_131
+Build-Jdk: 1.8.0_161
 Implementation-URL: http://projects.spring.io/spring-boot/Notaneitor/
 Created-By: Maven Integration for Eclipse
 Implementation-Vendor: Pivotal Software, Inc.
