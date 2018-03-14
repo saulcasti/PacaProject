@@ -38,7 +38,6 @@ public class UsersService {
 		Page<User> users = usersRepository.findAll(pageable); 
 		return users;
 	}
-
 	
 	public User getUser(Long id) {
 		return usersRepository.findOne(id); 
