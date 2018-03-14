@@ -25,7 +25,9 @@ public class SignUpFormValidator implements Validator{
 		if (user.getEmail().length() < 5 || user.getEmail().length() > 24) {
 			errors.rejectValue("email", "Error.signup.email.length");
 		}
-		if (user.getEmail().split("@").length != 2 || user.getEmail().split(".").length != 2) {
+		int a = user.getEmail().split("@").length;
+		int b = user.getEmail().split(".").length;
+		if (user.getEmail().split("@").length != 2) {
 			errors.rejectValue("email", "Error.signup.email.format");
 		}
 
@@ -34,11 +36,11 @@ public class SignUpFormValidator implements Validator{
 
 		}
 
-		if (user.getName().length() < 5 || user.getName().length() > 24) {
+		if (user.getName().length() < 2 || user.getName().length() > 24) {
 			errors.rejectValue("name", "Error.signup.name.length");
 		}
 
-		if (user.getLastName().length() < 5 || user.getLastName().length() > 24) {
+		if (user.getLastName().length() < 2 || user.getLastName().length() > 24) {
 			errors.rejectValue("lastName", "Error.signup.lastName.length");
 		}
 
