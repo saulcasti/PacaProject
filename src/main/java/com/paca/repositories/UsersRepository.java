@@ -34,5 +34,6 @@ public interface UsersRepository extends CrudRepository<User, Long>{
 	void updateAcceptFriend(boolean revised, Long id);
 
 
-	
+	@Query("SELECT u.requestsReceived FROM User u where u.email != ?1")
+	Page<User> findListFriendRequest(Pageable pageable, String email);
 }

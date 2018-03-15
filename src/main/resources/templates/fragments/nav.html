@@ -15,6 +15,9 @@
 				
 				<li><a href="/user/list" sec:authorize="isAuthenticated()" 
 				 th:text="#{nav.user.list}">Listado de usuarios</a></li>
+				 
+				 	<li><a href="/user/listFriendRequest" sec:authorize="isAuthenticated()" 
+				 th:text="#{nav.user.listFriendRequest}">Peticiones de amistad</a></li>
 
 			</ul>
 			<ul class="nav navbar-nav navbar-right">

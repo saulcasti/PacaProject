@@ -24,10 +24,10 @@ public class User {
 	
 	private Boolean acceptFriend = false;
 
-	@ManyToMany(cascade = CascadeType.ALL) @JoinTable(name = "requestsSend",
+	@ManyToMany(cascade = CascadeType.ALL) @JoinTable(name = "requestsReceived",
 			joinColumns = { @JoinColumn(name = "userSend_id") },
-			inverseJoinColumns = { @JoinColumn(name = "user_id") } )
-	public Set<User> requestsSend = new HashSet<User>();
+			inverseJoinColumns = { @JoinColumn(name = "userReceived_id") } )
+	public Set<User> requestsReceived = new HashSet<User>();
 	
 	@ManyToMany(cascade = CascadeType.ALL) @JoinTable(name = "users_meet",
 			joinColumns = { @JoinColumn(name = "user_id") },
@@ -107,6 +107,12 @@ public class User {
 	}
 	public void setFriends(Set<User> friends) {
 		this.friends = friends;
+	}
+	public Set<User> getRequestsReceived() {
+		return requestsReceived;
+	}
+	public void setRequestsReceived(Set<User> requestsReceived) {
+		this.requestsReceived = requestsReceived;
 	}
 
 	

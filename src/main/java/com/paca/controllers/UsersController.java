@@ -122,7 +122,7 @@ public class UsersController {
 		
 		Page<User> users = new PageImpl<User>(new LinkedList<User>());
 		
-//		users = usersService.getUserFriends(pageable, email);
+		users = usersService.getUsersFromFriendRequests(pageable, email);
 		
 		model.addAttribute("usersList", users.getContent() );
 		model.addAttribute("page", users);
