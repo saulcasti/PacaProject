@@ -109,4 +109,19 @@ public class UsersController {
 		usersService.setUserIsAddFriend(false, id);
 		return "redirect:/user/list";
 	}
+	
+	@RequestMapping("/user/listFriendRequest" )
+	public String getListado(Model model, Pageable pageable, Principal principal){
+		
+		String email = principal.getName();
+		
+		Page<User> users = new PageImpl<User>(new LinkedList<User>());
+		
+//		users = usersService.getUserFriends(pageable, email);
+		
+		model.addAttribute("usersList", users.getContent() );
+		model.addAttribute("page", users);
+		
+		return "user/listFriendRequest";
+	}
 }

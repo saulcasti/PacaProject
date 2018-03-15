@@ -1,4 +1,5 @@
-package com.paca.entities; import java.util.Set;
+package com.paca.entities; import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 //A collection that contains no duplicate elements 
@@ -23,10 +24,15 @@ public class User {
 	
 	private Boolean acceptFriend = false;
 
+	@ManyToMany(cascade = CascadeType.ALL) @JoinTable(name = "requestsSend",
+			joinColumns = { @JoinColumn(name = "userSend_id") },
+			inverseJoinColumns = { @JoinColumn(name = "user_id") } )
+	public Set<User> requestsSend = new HashSet<User>();
+	
 	@ManyToMany(cascade = CascadeType.ALL) @JoinTable(name = "users_meet",
 			joinColumns = { @JoinColumn(name = "user_id") },
 			inverseJoinColumns = { @JoinColumn(name = "userFriend_id") } )
-	public Set<User> amigos;
+	public Set<User> friends = new HashSet<User>();
 
 
 	public User(String email, String name, String lastName) { 
@@ -96,12 +102,13 @@ public class User {
 	public void setAcceptFriend(Boolean acceptFriend) {
 		this.acceptFriend = acceptFriend;
 	}
-	public Set<User> getAmigos() {
-		return amigos;
+	public Set<User> getFriends() {
+		return friends;
 	}
-	public void setAmigos(Set<User> amigos) {
-		this.amigos = amigos;
-	} 
+	public void setFriends(Set<User> friends) {
+		this.friends = friends;
+	}
+
 	
 	
 }

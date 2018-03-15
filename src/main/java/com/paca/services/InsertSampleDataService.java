@@ -34,6 +34,8 @@ public class InsertSampleDataService {
 		User user6 = new User("elJonas@gmail.com", "Jonás", "Tomás");
 		user6.setPassword("123456");
 		
+		user2.getFriends().add(user4);
+		
 		usersService.addUser(user1);
 		usersService.addUser(user2);
 		usersService.addUser(user3);

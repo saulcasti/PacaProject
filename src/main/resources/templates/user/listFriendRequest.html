@@ -9,13 +9,6 @@
 		<h2 th:text="#{user.list.users}">Usuarios</h2>
 		<form class="navbar-form" action="/user/listFriendRequest">
 
-			<div class="form-group">
-
-				<input name="searchText" type="text" class="form-control" size="50"
-					placeholder="Buscar por email o nombre del usuario">
-			</div>
-			<button type="submit" class="btn btn-default" th:text="#{user.list.search}">Buscar</button>
-
 		</form>
 		
 		<div class="table-responsive">
@@ -49,10 +42,10 @@
 									<script th:inline="javascript">
 									/*<![CDATA[*/
 									$("#addButton[[${user.id}]]").click(function() {
-										$.get("/user/[[${user.id}]]/noIsAddFriend", function(data){
+										$.get("/user/[[${user.id}]]/acceptFriendRequest", function(data){
 											
 											var numberPage = [[${param.page}]];
-											var urlUpdate = '/user/list/update';
+											var urlUpdate = '/user/listFriendRequest/update';
 											if( numberPage != null){
 												urlUpdate += "?page="+numberPage[0];
 											}
@@ -63,30 +56,6 @@
 									});
 									/*]]>*/
 									</script>
-
-
-								</div>
-								<div th:unless="${user.acceptFriend}">
-
-									<button type="button" th:id="${'noaddButton' + user.id}"
-										class="btn btn-info">Ocultar petición</button>
-									<script th:inline="javascript">
-									/*<![CDATA[*/
-									$("#noaddButton[[${user.id}]]").click(function() {
-										$.get("/user/[[${user.id}]]/isAddFriend", function(data){
-
-											var numberPage = [[${param.page}]];
-											var urlUpdate = '/user/list/update';
-											if( numberPage != null){
-												urlUpdate += "?page="+numberPage[0];
-											}
-											
-											$("#tableUsers").load(urlUpdate);
-										})
-									});
-									/*]]>*/
-									</script>
-
 
 
 								</div>

@@ -28,4 +28,11 @@ public interface UsersRepository extends CrudRepository<User, Long>{
 	@Query("UPDATE User SET isAddFriend = ?1 WHERE id = ?2")
 	void updateIsAddFriend(boolean revised, Long id);
 	
+	@Modifying
+	@Transactional
+	@Query("UPDATE User SET acceptFriend = ?1 WHERE id = ?2")
+	void updateAcceptFriend(boolean revised, Long id);
+
+
+	
 }
