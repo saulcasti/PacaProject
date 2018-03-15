@@ -33,6 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			.loginPage("/login")
 			.permitAll()
 			.defaultSuccessUrl("/user/list")
+			.failureUrl("/login?error=aka")
 				.and()
 		.logout()
 			.permitAll();

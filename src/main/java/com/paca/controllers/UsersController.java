@@ -58,8 +58,13 @@ public class UsersController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(Model model) {
-		model.addAttribute("user", new User());
+	public String login(Model model, @RequestParam(required=false) String error) {
+		
+		if(error !=null) {
+			model.addAttribute("error", "Inicio de sesión fallido");
+		}
+		model.addAttribute("user", new User());	
+		
 		return "login";
 	}
 	
