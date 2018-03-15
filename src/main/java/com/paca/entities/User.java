@@ -1,4 +1,6 @@
-package com.paca.entities; import javax.persistence.*;
+package com.paca.entities; import java.util.Set;
+
+import javax.persistence.*;
 //A collection that contains no duplicate elements 
 
 @Entity
@@ -17,6 +19,14 @@ public class User {
 	@Transient //propiedad que no se almacena e la tabla.
 	private String passwordConfirm;
 
+	private Boolean isAddFriend = false;
+	
+	private Boolean acceptFriend = false;
+
+	@ManyToMany(cascade = CascadeType.ALL) @JoinTable(name = "users_meet",
+			joinColumns = { @JoinColumn(name = "user_id") },
+			inverseJoinColumns = { @JoinColumn(name = "userFriend_id") } )
+	public Set<User> amigos;
 
 
 	public User(String email, String name, String lastName) { 
@@ -73,5 +83,25 @@ public class User {
 	}
 	public String getFullName() { 
 		return this.name + " " + this.lastName;
+	}
+	public Boolean getIsAddFriend() {
+		return isAddFriend;
+	}
+	public void setIsAddFriend(Boolean isAddFriend) {
+		this.isAddFriend = isAddFriend;
+	}
+	public Boolean getAcceptFriend() {
+		return acceptFriend;
+	}
+	public void setAcceptFriend(Boolean acceptFriend) {
+		this.acceptFriend = acceptFriend;
+	}
+	public Set<User> getAmigos() {
+		return amigos;
+	}
+	public void setAmigos(Set<User> amigos) {
+		this.amigos = amigos;
 	} 
+	
+	
 }

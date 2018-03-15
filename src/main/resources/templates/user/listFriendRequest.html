@@ -7,7 +7,7 @@
 
 	<div class="container">
 		<h2 th:text="#{user.list.users}">Usuarios</h2>
-		<form class="navbar-form" action="/user/list">
+		<form class="navbar-form" action="/user/listFriendRequest">
 
 			<div class="form-group">
 
@@ -42,10 +42,10 @@
 						<td><a th:href="${'/user/edit/' + user.id}" th:text="#{modify.message}"></a></td> 
 						<td><a th:href="${'/user/delete/' + user.id}"  th:text="#{remove.message}"></a></td>-->
 						<td><div>
-								<div th:if="${user.isAddFriend}">
+								<div th:if="${user.acceptFriend}">
 
 									<button type="button" th:id="${'addButton' + user.id}"
-										class="btn btn-info">Enviar petición de amistad</button>
+										class="btn btn-info">Aceptar petición de amistad</button>
 									<script th:inline="javascript">
 									/*<![CDATA[*/
 									$("#addButton[[${user.id}]]").click(function() {
@@ -66,10 +66,10 @@
 
 
 								</div>
-								<div th:unless="${user.isAddFriend}">
+								<div th:unless="${user.acceptFriend}">
 
 									<button type="button" th:id="${'noaddButton' + user.id}"
-										class="btn btn-info">Eliminar amistad</button>
+										class="btn btn-info">Ocultar petición</button>
 									<script th:inline="javascript">
 									/*<![CDATA[*/
 									$("#noaddButton[[${user.id}]]").click(function() {

@@ -34,8 +34,8 @@ public class UsersService {
 		return users;
 	}
 	
-	public Page<User> getUsers(Pageable pageable){
-		Page<User> users = usersRepository.findAll(pageable); 
+	public Page<User> getUsers(Pageable pageable, String email){
+		Page<User> users = usersRepository.findAllWithOutCurrentUser(pageable, email); 
 		return users;
 	}
 	
@@ -56,11 +56,18 @@ public class UsersService {
 		return usersRepository.findByEmail(email);
 	} 
 	
-	public Page<User> searchUsersByDNIAndName(Pageable pageable, String searchText){ 
+	public Page<User> searchUsersByDNIAndName(Pageable pageable, String searchText, String email){ 
 		Page<User> users = new PageImpl<User>(new LinkedList<User>());
 		searchText = "%"+searchText+"%";
-		users = usersRepository.searchByEmailAndName(pageable, searchText); 
+		users = usersRepository.searchByEmailAndNameWithOutCurrentUser(pageable, searchText, email); 
 		return users;
 	}
+	
+	public void setUserIsAddFriend(boolean revised,Long id){ 
+		
+			usersRepository.updateIsAddFriend(revised, id);
+		
+	}
+
 	
 }
