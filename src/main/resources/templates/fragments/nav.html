@@ -16,7 +16,7 @@
 				<li><a href="/user/list" sec:authorize="isAuthenticated()" 
 				 th:text="#{nav.user.list}">Listado de usuarios</a></li>
 				 
-				 	<li><a href="/user/listFriendRequest" sec:authorize="isAuthenticated()" 
+				 	<li><a href="/request/list" sec:authorize="isAuthenticated()" 
 				 th:text="#{nav.user.listFriendRequest}">Peticiones de amistad</a></li>
 
 			</ul>
@@ -30,12 +30,12 @@
 						<li><a id="btnEnglish" value="EN"> <img
 								th:src="@{/img/if_uk_flag.png}"
 								style="border: 0; float: left; margin-right: 15px" /> <span
-								th:text="#{language.en}">Inglés</span>
+								th:text="#{language.en}">IngleÌ�s</span>
 						</a></li>
 						<li><a id="btnSpanish" value="ES"> <img
 								th:src="@{/img/if_spain_flag.png}"
 								style="border: 0; float: left; margin-right: 15px" /> <span
-								th:text="#{language.es}">Español</span>
+								th:text="#{language.es}">Español</span>
 						</a></li>
 					</ul></li>
 				<li sec:authorize="!isAuthenticated()"><a href="/signup" > <span
@@ -43,7 +43,7 @@
 				</a></li>
 				<li sec:authorize="!isAuthenticated()"><a href="/login"
 					> <span
-						class="glyphicon glyphicon-log-in"></span> Identifícate
+						class="glyphicon glyphicon-log-in"></span> IdentifiÌ�cate
 				</a></li>
 				<li sec:authorize="isAuthenticated()"><a href="/logout"> <span
 						class="glyphicon glyphicon-log-out"></span> Desconectar

@@ -33,6 +33,12 @@ public class User {
 			joinColumns = { @JoinColumn(name = "user_id") },
 			inverseJoinColumns = { @JoinColumn(name = "userFriend_id") } )
 	public Set<User> friends = new HashSet<User>();
+	
+	@OneToMany(mappedBy = "transmitter", cascade = CascadeType.ALL)
+	private Set<Request> sent /*= new HashSet<Request>()*/;
+	
+	@OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL)
+	private Set<Request> received /*= new HashSet<Request>()*/;
 
 
 	public User(String email, String name, String lastName) { 
@@ -73,8 +79,18 @@ public class User {
 		this.lastName = lastName;
 	}
 
-
-
+	public Set<Request> getSent() {
+		return sent;
+	}
+	public void setSent(Set<Request> sent) {
+		this.sent = sent;
+	}
+	public Set<Request> getReceived() {
+		return received;
+	}
+	public void setReceived(Set<Request> received) {
+		this.received = received;
+	}
 	public String getPassword() {
 		return password;
 	}
