@@ -13,6 +13,9 @@
 			<ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
 				<li><a href="/">Home</a></li>
 				
+				<li><a href="/post/create" sec:authorize="isAuthenticated()" 
+				 th:text="#{nav.post.create}">Crear Publicación</a></li>
+				
 				<li><a href="/user/list" sec:authorize="isAuthenticated()" 
 				 th:text="#{nav.user.list}">Listado de usuarios</a></li>
 				 

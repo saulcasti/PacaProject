@@ -29,10 +29,13 @@ public class User {
 	@OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL)
 	private Set<Request> received /*= new HashSet<Request>()*/;
 
-
+	// Amistades actuales
 	@OneToMany(mappedBy = "friend", cascade = CascadeType.ALL)
 	private Set<Friendship> friends ;
 	
+	// Publicaciones realizadas
+	@OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
+	private Set<Post> posts ;
 	
 	public User(String email, String name, String lastName) { 
 		super();
