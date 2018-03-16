@@ -20,19 +20,7 @@ public class User {
 	@Transient //propiedad que no se almacena e la tabla.
 	private String passwordConfirm;
 
-	private Boolean isAddFriend = false;
-	
-	private Boolean acceptFriend = false;
-
-	@ManyToMany(cascade = CascadeType.ALL) @JoinTable(name = "requestsReceived",
-			joinColumns = { @JoinColumn(name = "userSend_id") },
-			inverseJoinColumns = { @JoinColumn(name = "userReceived_id") } )
-	public Set<User> requestsReceived = new HashSet<User>();
-	
-	@ManyToMany(cascade = CascadeType.ALL) @JoinTable(name = "users_meet",
-			joinColumns = { @JoinColumn(name = "user_id") },
-			inverseJoinColumns = { @JoinColumn(name = "userFriend_id") } )
-	public Set<User> friends = new HashSet<User>();
+	private Boolean isAddFriend = true;
 	
 	@OneToMany(mappedBy = "transmitter", cascade = CascadeType.ALL)
 	private Set<Request> sent /*= new HashSet<Request>()*/;
@@ -112,25 +100,5 @@ public class User {
 	public void setIsAddFriend(Boolean isAddFriend) {
 		this.isAddFriend = isAddFriend;
 	}
-	public Boolean getAcceptFriend() {
-		return acceptFriend;
-	}
-	public void setAcceptFriend(Boolean acceptFriend) {
-		this.acceptFriend = acceptFriend;
-	}
-	public Set<User> getFriends() {
-		return friends;
-	}
-	public void setFriends(Set<User> friends) {
-		this.friends = friends;
-	}
-	public Set<User> getRequestsReceived() {
-		return requestsReceived;
-	}
-	public void setRequestsReceived(Set<User> requestsReceived) {
-		this.requestsReceived = requestsReceived;
-	}
-
-	
 	
 }

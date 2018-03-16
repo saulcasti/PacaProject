@@ -11,7 +11,6 @@ import com.paca.entities.User;
 
 public interface UsersRepository extends CrudRepository<User, Long>{
 	
-	//@Query("SELECT u FROM User u Where (LOWER(u.email) LIKE LOWER(?1))")
 	User findByEmail(String email);
 	
 	@Query("SELECT u FROM User u WHERE u.email != ?2 and (LOWER(u.email) LIKE LOWER(?1) OR LOWER(u.name) LIKE LOWER(?1))")
@@ -27,13 +26,4 @@ public interface UsersRepository extends CrudRepository<User, Long>{
 	@Transactional
 	@Query("UPDATE User SET isAddFriend = ?1 WHERE id = ?2")
 	void updateIsAddFriend(boolean revised, Long id);
-	
-	@Modifying
-	@Transactional
-	@Query("UPDATE User SET acceptFriend = ?1 WHERE id = ?2")
-	void updateAcceptFriend(boolean revised, Long id);
-
-
-	@Query("SELECT u.requestsReceived FROM User u where u.email != ?1")
-	Page<User> findListFriendRequest(Pageable pageable, String email);
 }

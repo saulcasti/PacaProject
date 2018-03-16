@@ -31,21 +31,17 @@ public class RequestsService {
 		// TODO Auto-generated method stub
 		return requests;
 	}
-	
-//	public void addRequest(Request request) {
-//		requestsRepository.save(request);
-//	}
 
 	public void sendRequest(Long id_to,Long id_from ) {
 		User transmitter= usersRepository.findOne(id_from);
 		User receiver = usersRepository.findOne(id_to);
-		usersService.setUserIsAddFriend(true, id_to);
+		usersService.setUserIsAddFriend(false, id_to);
 		Request request = new Request(transmitter.getFullName()+" quiere ser tu amig@", transmitter, receiver);
 		requestsRepository.save(request);
 	}
 
 	public void cancellRequest(Long id_to,Long id_from ) {
-		usersService.setUserIsAddFriend(false, id_to);
+		usersService.setUserIsAddFriend(true, id_to);
 		requestsRepository.delete(requestsRepository.findByTransmitterAndReceiver(id_to, id_from));
 	}
 }
