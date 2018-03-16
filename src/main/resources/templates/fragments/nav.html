@@ -24,6 +24,9 @@
 				 
 				 <li><a href="/user/friendsList" sec:authorize="isAuthenticated()" 
 				 th:text="#{nav.user.friendsList}">Amigos</a></li>
+				 
+				  <li><a href="/post/list" sec:authorize="isAuthenticated()" 
+				 th:text="#{nav.post.list}">Mis Posts</a></li>
 
 			</ul>
 			<ul class="nav navbar-nav navbar-right">

@@ -55,7 +55,7 @@ public class Post {
 
 	public void setDateToday() {
 		Date d = new Date();
-		SimpleDateFormat dt = new SimpleDateFormat("yyyyy-mm-dd hh:mm:ss"); 
+		SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss"); 
 		String today = dt.format(d);
 		this.date=today;
 	}

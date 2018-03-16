@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.paca.entities.Post;
 import com.paca.entities.User;
 
 
@@ -20,6 +21,9 @@ public class InsertSampleDataService {
 	
 	@Autowired
 	private FriendshipService friendshipService;
+	
+	@Autowired
+	private PostService postService;
 	
 	@PostConstruct
 	public void init() {
@@ -55,6 +59,13 @@ public class InsertSampleDataService {
 		requestService.sendRequest(user1.getId(), user6.getId());
 		requestService.sendRequest(user2.getId(), user1.getId());
 
+		Post post1 = new Post();
+		post1.setAuthor(user2);
+		post1.setDateToday();
+		post1.setText("Paca guapa");
+		post1.setTitle("Mujeres de honor");
+		
+		postService.createPost(post1);
 
 	}
 
