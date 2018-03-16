@@ -122,23 +122,7 @@ public class UsersController {
 		requestsService.cancellRequest(id, usersService.getUserEmail(principal.getName()).getId());
 		return "redirect:/user/list";
 	}
-	
-	
-	
-//	@RequestMapping("/user/friendsList" )
-//	public String getListadoAmigos(Model model, Pageable pageable, Principal principal){
-//		
-//		String email = principal.getName();
-//		
-//		Page<User> users = new PageImpl<User>(new LinkedList<User>());
-//		
-//		users = usersService.getFriends(pageable, email);
-//		
-//		model.addAttribute("usersList", users.getContent() );
-//		model.addAttribute("page", users);
-//		
-//		return "user/friendsList";
-//	}
+
 	
 	
 }

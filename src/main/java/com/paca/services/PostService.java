@@ -24,5 +24,7 @@ public class PostService {
 		Page<Post> posts = postRepository.findAllPostByEmailAuthor(pageable, email); 
 		return posts;
 	}
+
+
 	
 }

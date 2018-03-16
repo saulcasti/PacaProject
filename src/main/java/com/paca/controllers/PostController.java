@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -67,4 +68,18 @@ public class PostController {
 		return "post/list";
 	}
 
+	@RequestMapping(value="/post/{id}/list", method=RequestMethod.GET) 
+	public String setResendTrue(Model model, @PathVariable Long id , Pageable pageable){
+		
+		Page<Post> post = new PageImpl<Post>(new LinkedList<Post>());
+		
+		post = postService.getPosts(pageable, usersService.getUser(id).getEmail());
+		
+		model.addAttribute("postsList", post.getContent() );
+		model.addAttribute("nameAuthor", usersService.getUser(id).getFullName());
+		model.addAttribute("page", post);
+		return "/post/list";
+	}
+	
+	
 }

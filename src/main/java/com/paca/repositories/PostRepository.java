@@ -12,4 +12,7 @@ public interface PostRepository extends CrudRepository<Post, Long>{
 
 	@Query("SELECT p FROM Post p WHERE p.author.email = ?1 ORDER BY p.id ASC ")
 	Page<Post> findAllPostByEmailAuthor(Pageable pageable, String email);
+
+	@Query("SELECT p FROM Post p WHERE p.author.id = ?1 ORDER BY p.id ASC ")
+	Page<Post> findAllPostByIdAuthor(Pageable pageable, Long id);
 }
