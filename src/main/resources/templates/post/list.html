@@ -6,13 +6,14 @@
 	<nav th:replace="fragments/nav" />
 
 	<div class="container">
-		<h2 th:text="${'Publicaciones de ' + nameAuthor}">Publicaciones</h2>
+		<h2 th:text="${nameAuthor}">Publicaciones</h2>
 
 		<div class="table-responsive">
 			<table class="table table-hover" th:fragment="tablePosts"
 				id="tablePosts">
 				<thead>
 					<tr>
+						<th >Imagen</th>
 						<th>Título</th>
 						<th>Fecha</th>
 						<th class="col-md-1"></th>
@@ -21,8 +22,10 @@
 				</thead>
 				<tbody>
 					<tr th:each="post : ${postsList}">
-						<td th:text="${post.title}">Título post</td>
-						<td th:text="${post.date}">Fecha post</td>
+						<td style="width:250px; vertical-align:middle"><img th:if="${post.imageURL != null}" th:src="${post.imageURL}" style="width:250px"" /></td>
+						<td style="width:250px; vertical-align:middle" th:text="${post.title}">Título post</td>
+						<td  style="width:250px; vertical-align:middle" th:text="${post.date}">Fecha post</td>
+						
 						
 					</tr>
 				</tbody>

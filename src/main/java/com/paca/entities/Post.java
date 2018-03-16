@@ -18,6 +18,7 @@ public class Post {
 	private String date; // con el formato YYYY/MM/DD
 	private String text;
 	private String title;
+	private String imageURL;
 	
 	public Post() {}
 
@@ -115,6 +116,14 @@ public class Post {
 		} else if (!title.equals(other.title))
 			return false;
 		return true;
+	}
+
+	public String getImageURL() {
+		return imageURL;
+	}
+
+	public void setImageURL(String image) {
+		this.imageURL = image;
 	}
 	
 	

@@ -62,8 +62,9 @@ public class InsertSampleDataService {
 		Post post1 = new Post();
 		post1.setAuthor(user2);
 		post1.setDateToday();
-		post1.setText("Paca guapa");
+		post1.setText("Paca Salas");
 		post1.setTitle("Mujeres de honor");
+		post1.setImageURL("/img/post/PacaSalas.jpg");
 		
 		postService.createPost(post1);
 
