@@ -55,6 +55,7 @@ public class InsertSampleDataService {
 		requestService.sendRequest(user1.getId(), user6.getId());
 		requestService.sendRequest(user2.getId(), user1.getId());
 
+//		usersService.addFriend(user1.getId(), user2.getId());
 	}
 
 }

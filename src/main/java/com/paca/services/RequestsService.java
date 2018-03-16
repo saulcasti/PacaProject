@@ -44,4 +44,9 @@ public class RequestsService {
 		usersService.setUserIsAddFriend(true, id_to);
 		requestsRepository.delete(requestsRepository.findByTransmitterAndReceiver(id_to, id_from));
 	}
+
+	public void acceptRequest(Long id_request, Long idUser) {
+		usersService.addFriend(requestsRepository.findOtherUserIdFromRequest(id_request), idUser);
+		requestsRepository.delete(id_request);
+	}
 }

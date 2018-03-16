@@ -15,5 +15,8 @@ public interface RequestRepository extends CrudRepository<Request, Long>{
 
 	@Query("SELECT r.id FROM Request r WHERE r.receiver.id = ?1 AND	r.transmitter.id = ?2")
 	Long findByTransmitterAndReceiver(Long id_to, Long id_from);
+	
+	@Query("SELECT r.transmitter FROM Request r WHERE r.id = ?1")
+	Long findOtherUserIdFromRequest(Long id_request);
 
 }

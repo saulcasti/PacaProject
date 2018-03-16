@@ -69,9 +69,12 @@ public class UsersService {
 	}
 	
 	public void setUserIsAddFriend(boolean revised,Long id){ 
-		
-			usersRepository.updateIsAddFriend(revised, id);
-		
+		usersRepository.updateIsAddFriend(revised, id);	
+	}
+	
+	public void addFriend(Long idUser1, Long idUser) {
+		getUser(idUser).addFriend(getUser(idUser1));
+		getUser(idUser1).addFriend(getUser(idUser));
 	}
 
 }

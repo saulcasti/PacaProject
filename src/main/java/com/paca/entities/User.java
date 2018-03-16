@@ -21,10 +21,15 @@ public class User {
 	private String passwordConfirm;
 
 	private Boolean isAddFriend = true;
-	
+
+	@ManyToMany(cascade = CascadeType.ALL) @JoinTable(name = "friendship",
+			joinColumns = { @JoinColumn(name = "user1_id") },
+			inverseJoinColumns = { @JoinColumn(name = "user2_id") } )
+	private Set<User> friends;
+
 	@OneToMany(mappedBy = "transmitter", cascade = CascadeType.ALL)
 	private Set<Request> sent /*= new HashSet<Request>()*/;
-	
+
 	@OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL)
 	private Set<Request> received /*= new HashSet<Request>()*/;
 
@@ -100,5 +105,14 @@ public class User {
 	public void setIsAddFriend(Boolean isAddFriend) {
 		this.isAddFriend = isAddFriend;
 	}
-	
+	public Set<User> getFriends() {
+		return friends;
+	}
+	public void setFriends(Set<User> friends) {
+		this.friends = friends;
+	}
+
+	public void addFriend(User user) {
+		friends.add(user);
+	}
 }

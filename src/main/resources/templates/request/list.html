@@ -23,11 +23,29 @@
 				<tbody>
 					<tr th:each="request : ${requestList}">
 						<td th:text="${request.transmitter.name}">Nombre del usuario</td>
-						<td th:text="${request.transmitter.lastName}">Apellido del usuario</td>
+						<td th:text="${request.transmitter.lastName}">Apellido del
+							usuario</td>
 						<td th:text="${request.descripcion}">Mensaje</td>
 						<td><div>
 								<button type="button" th:id="${'addButton' + request.id}"
 									class="btn btn-info">Aceptar petición de amistad</button>
+								<script th:inline="javascript">
+									/*<![CDATA[*/
+									$("#addButton[[${user.id}]]").click(function() {
+										$.get("/request/[[${request.id}]]/accept", function(data){
+											
+											var numberPage = [[${param.page}]];
+											var urlUpdate = '/request/list/update';
+											if( numberPage != null){
+												urlUpdate += "?page="+numberPage[0];
+											}
+											
+											$("#tableRequests").load(urlUpdate);
+											
+																					})
+									});
+									/*]]>*/
+									</script>
 							</div></td>
 					</tr>
 				</tbody>
