@@ -79,18 +79,5 @@ public class UsersService {
 			usersRepository.updateIsAddFriend(revised, id);
 		
 	}
-	
-	public void sendRequest(Long id_to,Long id_from ) {
-		User transmitter= usersRepository.findOne(id_from);
-		User receiver = usersRepository.findOne(id_to);
-		
-		Request request = new Request(transmitter.getFullName()+" quiere ser tu amig@", transmitter, receiver);
-		requestRepository.save(request);
-	}
-
-	public void cancellRequest(Long id_to,Long id_from ) {
-
-		requestRepository.delete(requestRepository.findByTransmitterAndReceiver(id_to, id_from));
-	}
 
 }

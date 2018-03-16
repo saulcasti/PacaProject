@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.paca.entities.Request;
 import com.paca.entities.User;
+import com.paca.services.RequestsService;
 import com.paca.services.SecurityService;
 import com.paca.services.UsersService;
 import com.paca.validators.SignUpFormValidator;
@@ -30,6 +32,9 @@ public class UsersController {
 
 	@Autowired
 	private UsersService usersService;
+	
+	@Autowired
+	private RequestsService requestsService;
 	
 	 @Autowired
 	 private SecurityService securityService;
@@ -112,14 +117,14 @@ public class UsersController {
 	
 	@RequestMapping(value="/user/{id}/isAddFriend", method=RequestMethod.GET) 
 	public String setResendTrue(Model model, @PathVariable Long id, Principal principal){
-		usersService.setUserIsAddFriend(true, id);
-		usersService.sendRequest(id, usersService.getUserEmail(principal.getName()).getId());
+//		usersService.setUserIsAddFriend(true, id);
+		requestsService.sendRequest(id, usersService.getUserEmail(principal.getName()).getId());
 		return "redirect:/user/list";
 	}
 	@RequestMapping(value="/user/{id}/noIsAddFriend", method=RequestMethod.GET) 
 	public String setResendFalse(Model model, @PathVariable Long id, Principal principal){
-		usersService.setUserIsAddFriend(false, id);
-		usersService.cancellRequest(id, usersService.getUserEmail(principal.getName()).getId());
+//		usersService.setUserIsAddFriend(false, id);
+		requestsService.cancellRequest(id, usersService.getUserEmail(principal.getName()).getId());
 		return "redirect:/user/list";
 	}
 	
