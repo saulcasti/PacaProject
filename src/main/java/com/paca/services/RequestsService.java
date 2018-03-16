@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import com.paca.entities.Request;
 import com.paca.entities.User;
 import com.paca.repositories.RequestRepository;
-import com.paca.repositories.UsersRepository;
 
 @Service
 public class RequestsService {
@@ -21,9 +20,9 @@ public class RequestsService {
 	
 	@Autowired
 	private UsersService usersService;
-	
+
 	@Autowired
-	private UsersRepository usersRepository;
+	private FriendshipService friendshipService;
 
 	public Page<Request> searchRequestReceived(Pageable pageable, User user) {
 		Page<Request> requests = new PageImpl<Request>(new LinkedList<Request>());
@@ -33,8 +32,8 @@ public class RequestsService {
 	}
 
 	public void sendRequest(Long id_to,Long id_from ) {
-		User transmitter= usersRepository.findOne(id_from);
-		User receiver = usersRepository.findOne(id_to);
+		User transmitter= usersService.getUser(id_from);
+		User receiver = usersService.getUser(id_to);
 		usersService.setUserIsAddFriend(false, id_to);
 		Request request = new Request(transmitter.getFullName()+" quiere ser tu amig@", transmitter, receiver);
 		requestsRepository.save(request);
@@ -46,7 +45,7 @@ public class RequestsService {
 	}
 
 	public void acceptRequest(Long id_request, Long idUser) {
-		usersService.addFriend(requestsRepository.findOtherUserIdFromRequest(id_request), idUser);
+		friendshipService.addFriend(requestsRepository.findOtherUserIdFromRequest(id_request), idUser);
 		requestsRepository.delete(id_request);
 	}
 }

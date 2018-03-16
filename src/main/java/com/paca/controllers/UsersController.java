@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.paca.entities.Request;
 import com.paca.entities.User;
 import com.paca.services.RequestsService;
 import com.paca.services.SecurityService;
@@ -125,4 +122,23 @@ public class UsersController {
 		requestsService.cancellRequest(id, usersService.getUserEmail(principal.getName()).getId());
 		return "redirect:/user/list";
 	}
+	
+	
+	
+//	@RequestMapping("/user/friendsList" )
+//	public String getListadoAmigos(Model model, Pageable pageable, Principal principal){
+//		
+//		String email = principal.getName();
+//		
+//		Page<User> users = new PageImpl<User>(new LinkedList<User>());
+//		
+//		users = usersService.getFriends(pageable, email);
+//		
+//		model.addAttribute("usersList", users.getContent() );
+//		model.addAttribute("page", users);
+//		
+//		return "user/friendsList";
+//	}
+	
+	
 }

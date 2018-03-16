@@ -31,7 +31,7 @@
 									class="btn btn-info">Aceptar petición de amistad</button>
 								<script th:inline="javascript">
 									/*<![CDATA[*/
-									$("#addButton[[${user.id}]]").click(function() {
+									$("#addButton[[${request.id}]]").click(function() {
 										$.get("/request/[[${request.id}]]/accept", function(data){
 											
 											var numberPage = [[${param.page}]];

@@ -18,6 +18,9 @@
 				 
 				 	<li><a href="/request/list" sec:authorize="isAuthenticated()" 
 				 th:text="#{nav.user.listFriendRequest}">Peticiones de amistad</a></li>
+				 
+				 <li><a href="/user/friendsList" sec:authorize="isAuthenticated()" 
+				 th:text="#{nav.user.friendsList}">Amigos</a></li>
 
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
@@ -30,7 +33,7 @@
 						<li><a id="btnEnglish" value="EN"> <img
 								th:src="@{/img/if_uk_flag.png}"
 								style="border: 0; float: left; margin-right: 15px" /> <span
-								th:text="#{language.en}">IngleÌ�s</span>
+								th:text="#{language.en}">Inglés</span>
 						</a></li>
 						<li><a id="btnSpanish" value="ES"> <img
 								th:src="@{/img/if_spain_flag.png}"

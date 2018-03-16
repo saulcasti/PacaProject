@@ -13,18 +13,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.paca.entities.Request;
 import com.paca.entities.User;
-import com.paca.repositories.RequestRepository;
+
 import com.paca.repositories.UsersRepository;
 
 @Service
 public class UsersService { 
 	@Autowired
 	private UsersRepository usersRepository;
-	
-	@Autowired
-	private RequestRepository requestRepository;
 	
 	 @Autowired
 	 private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -72,9 +68,14 @@ public class UsersService {
 		usersRepository.updateIsAddFriend(revised, id);	
 	}
 	
-	public void addFriend(Long idUser1, Long idUser) {
-		getUser(idUser).addFriend(getUser(idUser1));
-		getUser(idUser1).addFriend(getUser(idUser));
-	}
+//	public void addFriend(Long idUser1, Long idUser) {
+//		getUser(idUser).addFriend(new Friendship(getUser(idUser1), getUser(idUser)));
+//		getUser(idUser1).addFriend(new Friendship(getUser(idUser), getUser(idUser1)));
+//	}
+//
+//	public Page<User> getFriends(Pageable pageable, String email) {
+//		Page<User> users = usersRepository.findFriendOfOneUser(pageable, email); 
+//		return users;
+//	}
 
 }

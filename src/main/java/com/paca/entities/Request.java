@@ -11,12 +11,10 @@ public class Request {
 	private String descripcion;
 
 	@ManyToOne
-//	@JoinColumn(name = "user_id")
-	private User transmitter; //emisor
+	private User transmitter; //emite
 	
 	@ManyToOne
-//	@JoinColumn(name = "user_id")
-	private User receiver; //emisor
+	private User receiver; //recibe
 	
 	public Request() {}
 	

@@ -1,14 +1,11 @@
 package com.paca.services;
 
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.paca.entities.Request;
 import com.paca.entities.User;
 
 
@@ -20,6 +17,9 @@ public class InsertSampleDataService {
 	
 	@Autowired
 	private RequestsService requestService;
+	
+	@Autowired
+	private FriendshipService friendshipService;
 	
 	@PostConstruct
 	public void init() {
@@ -55,7 +55,7 @@ public class InsertSampleDataService {
 		requestService.sendRequest(user1.getId(), user6.getId());
 		requestService.sendRequest(user2.getId(), user1.getId());
 
-//		usersService.addFriend(user1.getId(), user2.getId());
+
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.paca.entities; import java.util.HashSet;
+package com.paca.entities;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -22,10 +22,6 @@ public class User {
 
 	private Boolean isAddFriend = true;
 
-	@ManyToMany(cascade = CascadeType.ALL) @JoinTable(name = "friendship",
-			joinColumns = { @JoinColumn(name = "user1_id") },
-			inverseJoinColumns = { @JoinColumn(name = "user2_id") } )
-	private Set<User> friends;
 
 	@OneToMany(mappedBy = "transmitter", cascade = CascadeType.ALL)
 	private Set<Request> sent /*= new HashSet<Request>()*/;
@@ -34,8 +30,12 @@ public class User {
 	private Set<Request> received /*= new HashSet<Request>()*/;
 
 
+	@OneToMany(mappedBy = "friend", cascade = CascadeType.ALL)
+	private Set<Friendship> friends ;
+	
+	
 	public User(String email, String name, String lastName) { 
-//		super();
+		super();
 		this.email = email; 
 		this.name = name; 
 		this.lastName = lastName;
@@ -105,14 +105,16 @@ public class User {
 	public void setIsAddFriend(Boolean isAddFriend) {
 		this.isAddFriend = isAddFriend;
 	}
-	public Set<User> getFriends() {
-		return friends;
-	}
-	public void setFriends(Set<User> friends) {
-		this.friends = friends;
-	}
 
-	public void addFriend(User user) {
+	public void addFriend(Friendship user) {
 		friends.add(user);
 	}
+	public Set<Friendship> getFriends() {
+		return friends;
+	}
+	public void setFriends(Set<Friendship> friends) {
+		this.friends = friends;
+	}
+	
+	
 }
