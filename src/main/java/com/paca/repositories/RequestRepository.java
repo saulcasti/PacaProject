@@ -13,4 +13,7 @@ public interface RequestRepository extends CrudRepository<Request, Long>{
 	@Query("SELECT r FROM Request r WHERE r.receiver = ?1 ORDER BY r.id ASC ")
 	Page<Request> findReceivedRequestsForUser(Pageable pageable, User user);
 
+	@Query("SELECT r.id FROM Request r WHERE r.receiver.id = ?1 AND	r.transmitter.id = ?2")
+	Long findByTransmitterAndReceiver(Long id_to, Long id_from);
+
 }

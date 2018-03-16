@@ -111,13 +111,15 @@ public class UsersController {
 	}
 	
 	@RequestMapping(value="/user/{id}/isAddFriend", method=RequestMethod.GET) 
-	public String setResendTrue(Model model, @PathVariable Long id){
+	public String setResendTrue(Model model, @PathVariable Long id, Principal principal){
 		usersService.setUserIsAddFriend(true, id);
+		usersService.sendRequest(id, usersService.getUserEmail(principal.getName()).getId());
 		return "redirect:/user/list";
 	}
 	@RequestMapping(value="/user/{id}/noIsAddFriend", method=RequestMethod.GET) 
-	public String setResendFalse(Model model, @PathVariable Long id){
+	public String setResendFalse(Model model, @PathVariable Long id, Principal principal){
 		usersService.setUserIsAddFriend(false, id);
+		usersService.cancellRequest(id, usersService.getUserEmail(principal.getName()).getId());
 		return "redirect:/user/list";
 	}
 	

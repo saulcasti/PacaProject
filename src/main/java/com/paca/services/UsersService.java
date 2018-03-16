@@ -13,13 +13,18 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.paca.entities.Request;
 import com.paca.entities.User;
+import com.paca.repositories.RequestRepository;
 import com.paca.repositories.UsersRepository;
 
 @Service
 public class UsersService { 
 	@Autowired
 	private UsersRepository usersRepository;
+	
+	@Autowired
+	private RequestRepository requestRepository;
 	
 	 @Autowired
 	 private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -74,6 +79,18 @@ public class UsersService {
 			usersRepository.updateIsAddFriend(revised, id);
 		
 	}
-
 	
+	public void sendRequest(Long id_to,Long id_from ) {
+		User transmitter= usersRepository.findOne(id_from);
+		User receiver = usersRepository.findOne(id_to);
+		
+		Request request = new Request(transmitter.getFullName()+" quiere ser tu amig@", transmitter, receiver);
+		requestRepository.save(request);
+	}
+
+	public void cancellRequest(Long id_to,Long id_from ) {
+
+		requestRepository.delete(requestRepository.findByTransmitterAndReceiver(id_to, id_from));
+	}
+
 }
