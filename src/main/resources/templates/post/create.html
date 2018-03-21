@@ -7,7 +7,7 @@
 	
 	
 	<div class="container">
-		<h2>Crea una nueva publicación</h2>
+		<h2 id="crearPubli">Crea una nueva publicación</h2>
 		
 		<form class="form-horizontal" method="post" action="/post/create"
 			th:object="${post}"  enctype="multipart/form-data">
@@ -23,7 +23,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="text" th:text="#{post.create.text}">Texto</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="text"
+					<input style="height:250px; align-content:bottom;" type="text" class="form-control" name="text"
 						placeholder="Las mejores tres páginas de mi vida" required="true" /> <span
 						class="text-danger" th:if="${#fields.hasErrors('text')}"
 						th:errors="*{text}" />

@@ -9,6 +9,7 @@ encoding//src/main/resources/templates/post/create.html=UTF-8
 encoding//src/main/resources/templates/post/list.html=UTF-8
 encoding//src/main/resources/templates/request/list.html=UTF-8
 encoding//src/main/resources/templates/signup.html=UTF-8
+encoding//src/main/resources/templates/user/friendsList.html=UTF-8
 encoding//src/main/resources/templates/user/list.html=UTF-8
 encoding//src/test/java=UTF-8
 encoding/<project>=UTF-8
