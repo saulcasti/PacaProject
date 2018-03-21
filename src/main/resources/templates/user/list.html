@@ -49,7 +49,7 @@
 									<script th:inline="javascript">
 									/*<![CDATA[*/
 									$("#addButton[[${user.id}]]").click(function() {
-										$.get("/user/[[${user.id}]]/noIsAddFriend", function(data){
+										$.get("/user/[[${user.id}]]/isAddFriend", function(data){
 											
 											var numberPage = [[${param.page}]];
 											var urlUpdate = '/user/list/update';

@@ -106,15 +106,7 @@ public class UsersController {
 		return "login";
 	}
 	
-	@RequestMapping(value = "/login", method=RequestMethod.POST)
-	public String login(@Validated User user, BindingResult result ,Model model) {
-		signUpFormValidator.validate(user, result);
-		 if (result.hasErrors()) {
-			 return "login";
-		 }
-		 securityService.autoLogin(user.getEmail(), user.getPasswordConfirm()); 
-		 return "home";
-	}
+
 	
 	@RequestMapping("/user/list" )
 	public String getListado(Model model, Pageable pageable,
@@ -154,11 +146,7 @@ public class UsersController {
 		requestsService.sendRequest(id, usersService.getUserEmail(principal.getName()).getId());
 		return "redirect:/user/list";
 	}
-	@RequestMapping(value="/user/{id}/noIsAddFriend", method=RequestMethod.GET) 
-	public String setResendFalse(Model model, @PathVariable Long id, Principal principal){
-		requestsService.cancellRequest(id, usersService.getUserEmail(principal.getName()).getId());
-		return "redirect:/user/list";
-	}
+	
 
 	
 	
