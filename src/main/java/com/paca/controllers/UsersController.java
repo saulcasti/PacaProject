@@ -83,6 +83,7 @@ public class UsersController {
 		 if (result.hasErrors()) {
 			 return "signup";
 		 }
+		 user.setRole(rolesService.getRoles()[0]);
 		 usersService.addUser(user); 
 		 securityService.autoLogin(user.getEmail(), user.getPasswordConfirm()); 
 		 return "home";
@@ -90,11 +91,6 @@ public class UsersController {
 
 	@RequestMapping(value = { "/home" }, method = RequestMethod.GET) 
 	public String home(Model model) {
-//		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//		String email = auth.getName();
-//		User activeUser = usersService.getUserEmail(email);
-		//		model.addAttribute("requestList", activeUser.getReceived());
-		
 
 		return "home"; 
 	}

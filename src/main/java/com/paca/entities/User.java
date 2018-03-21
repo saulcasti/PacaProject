@@ -22,7 +22,7 @@ public class User {
 	@Transient //propiedad que no se almacena e la tabla.
 	private String passwordConfirm;
 	
-	private String role = "ROLE_USER";
+	private String role;
 	
 	
 

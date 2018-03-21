@@ -33,6 +33,7 @@ public class InsertSampleDataService {
 	public void init() {
 		User user1 = new User("pedro-@hotmail.com", "Pedro", "Díaz");
 		user1.setPassword("123456");
+		user1.setRole(rolesService.getRoles()[0]);
 		
 		User user2 = new User("laPaca@gmail.com", "Paca", "Salas");
 		user2.setPassword("123456");
@@ -40,15 +41,19 @@ public class InsertSampleDataService {
 		
 		User user3 = new User("laVero@gmail.com", "Vero", "Ortíz");
 		user3.setPassword("123456");
+		user3.setRole(rolesService.getRoles()[0]);
 		
 		User user4 = new User("laMonse@gmail.com", "Monse", "García");
 		user4.setPassword("123456");
+		user4.setRole(rolesService.getRoles()[0]);
 		
 		User user5 = new User("xkYoLoValgo@gmail.com", "José Luis", "LoBate");
 		user5.setPassword("123456");
+		user5.setRole(rolesService.getRoles()[0]);
 		
 		User user6 = new User("elJonas@gmail.com", "Jonás", "Tomás");
 		user6.setPassword("123456");
+		user6.setRole(rolesService.getRoles()[0]);
 		
 		usersService.addUser(user1);
 		usersService.addUser(user2);

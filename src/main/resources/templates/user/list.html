@@ -41,8 +41,8 @@
 						<!--  <td><a th:href="${'/user/details/' + user.id}"  th:text="#{details.message}"></a></td>
 						<td><a th:href="${'/user/edit/' + user.id}" th:text="#{modify.message}"></a></td> 
 						<td><a th:href="${'/user/delete/' + user.id}"  th:text="#{remove.message}"></a></td>-->
-						<td><div>
-								<div th:if="${user.isAddFriend}">
+						<td sec:authorize="hasRole('ROLE_USER')"><div>
+								<div th:if="${user.isAddFriend && user.role=='ROLE_USER'}">
 
 									<button type="button" th:id="${'addButton' + user.id}"
 										class="btn btn-info">Enviar petición de amistad</button>
@@ -66,31 +66,14 @@
 
 
 								</div>
-								<div th:unless="${user.isAddFriend}">
-
-									<button type="button" th:id="${'noaddButton' + user.id}"
-										class="btn btn-info">Eliminar amistad</button>
-									<script th:inline="javascript">
-									/*<![CDATA[*/
-									$("#noaddButton[[${user.id}]]").click(function() {
-										$.get("/user/[[${user.id}]]/isAddFriend", function(data){
-
-											var numberPage = [[${param.page}]];
-											var urlUpdate = '/user/list/update';
-											if( numberPage != null){
-												urlUpdate += "?page="+numberPage[0];
-											}
-											
-											$("#tableUsers").load(urlUpdate);
-										})
-									});
-									/*]]>*/
-									</script>
-
-
-
+								<div th:if="${user.role!='ROLE_USER'}">
+								Usuario administrador
 								</div>
+						
 							</div></td>
+							<td><a th:href="${'/user/delete/' + user.id}"
+							sec:authorize="hasRole('ROLE_ADMIN')"
+							th:text="#{user.list.removeUser}">Eliminar</a></td>
 					</tr>
 				</tbody>
 			</table>
