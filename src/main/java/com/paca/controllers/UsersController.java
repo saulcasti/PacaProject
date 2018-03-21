@@ -147,6 +147,11 @@ public class UsersController {
 		return "redirect:/user/list";
 	}
 	
+	@RequestMapping("/user/delete/{id}")
+	public String deleteMark(@PathVariable Long id) {
+		usersService.deleteUser(id);
+		return "redirect:/user/list";
+	}
 
 	
 	
