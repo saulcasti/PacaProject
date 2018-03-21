@@ -2,6 +2,8 @@ package com.paca.entities;
 import java.util.Set;
 
 import javax.persistence.*;
+
+import com.paca.services.RolesService;
 //A collection that contains no duplicate elements 
 
 @Entity
@@ -19,7 +21,23 @@ public class User {
 	private String password;
 	@Transient //propiedad que no se almacena e la tabla.
 	private String passwordConfirm;
+	
+	private String role = "ROLE_USER";
+	
+	
 
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	public Set<Post> getPosts() {
+		return posts;
+	}
+	public void setPosts(Set<Post> posts) {
+		this.posts = posts;
+	}
 	private Boolean isAddFriend = true;
 
 

@@ -25,6 +25,10 @@ public class InsertSampleDataService {
 	@Autowired
 	private PostService postService;
 	
+	 @Autowired
+	 private RolesService rolesService;
+	 
+	 
 	@PostConstruct
 	public void init() {
 		User user1 = new User("pedro-@hotmail.com", "Pedro", "Díaz");
@@ -32,6 +36,7 @@ public class InsertSampleDataService {
 		
 		User user2 = new User("laPaca@gmail.com", "Paca", "Salas");
 		user2.setPassword("123456");
+		user2.setRole(rolesService.getRoles()[1]);
 		
 		User user3 = new User("laVero@gmail.com", "Vero", "Ortíz");
 		user3.setPassword("123456");

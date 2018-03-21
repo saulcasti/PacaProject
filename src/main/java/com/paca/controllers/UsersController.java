@@ -4,6 +4,8 @@ package com.paca.controllers;
 import java.security.Principal;
 import java.util.LinkedList;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.paca.entities.User;
 import com.paca.services.RequestsService;
+import com.paca.services.RolesService;
 import com.paca.services.SecurityService;
 import com.paca.services.UsersService;
 import com.paca.validators.SignUpFormValidator;
@@ -38,6 +41,35 @@ public class UsersController {
 
 	 @Autowired
 	 private SignUpFormValidator signUpFormValidator;
+	 
+	 @Autowired
+	 private HttpSession httpSession;
+	 
+	 @Autowired
+	 private RolesService rolesService;
+	 
+	 
+	 
+//	 @RequestMapping(value="/admin/login", method = RequestMethod.POST)
+//	 public String loginAdmin(Model model, @RequestParam String username,  
+//			 @RequestParam String password) {
+//		 
+//		 securityService.autoLogin(username, password);
+//		 
+//		 return "admin/login";
+//	 }
+	 @RequestMapping(value="/admin/login", method = RequestMethod.GET)
+	 public String loginAdmin(Model model, @RequestParam(required=false) String error) {
+			
+			if(error !=null) {
+				model.addAttribute("error", "Inicio de sesión fallido");
+			}
+			model.addAttribute("user", new User());
+			httpSession.setAttribute("origen", rolesService.getRoles()[1]);
+			
+			return "admin/login";
+	 }
+	 
 	 
 	@RequestMapping(value = "/signup", method = RequestMethod.GET) 
 	public String signup(Model model) {
@@ -61,7 +93,9 @@ public class UsersController {
 //		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 //		String email = auth.getName();
 //		User activeUser = usersService.getUserEmail(email);
-//		model.addAttribute("requestList", activeUser.getReceived());
+		//		model.addAttribute("requestList", activeUser.getReceived());
+		
+
 		return "home"; 
 	}
 	
@@ -72,7 +106,7 @@ public class UsersController {
 			model.addAttribute("error", "Inicio de sesión fallido");
 		}
 		model.addAttribute("user", new User());	
-		
+		httpSession.setAttribute("origen", rolesService.getRoles()[0]);
 		return "login";
 	}
 	
@@ -89,6 +123,13 @@ public class UsersController {
 	@RequestMapping("/user/list" )
 	public String getListado(Model model, Pageable pageable,
 			@RequestParam(value = "", required=false) String searchText, Principal principal){
+		
+		
+		if(httpSession.getAttribute("origen").equals(rolesService.getRoles()[1]))
+			if(usersService.getUserEmail(principal.getName()).getRole().equals(rolesService.getRoles()[0])) {
+				return "redirect:/logout"; 
+			}
+		
 		
 		String email = principal.getName();
 		
