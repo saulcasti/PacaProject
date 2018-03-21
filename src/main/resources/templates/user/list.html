@@ -42,7 +42,7 @@
 						<td><a th:href="${'/user/edit/' + user.id}" th:text="#{modify.message}"></a></td> 
 						<td><a th:href="${'/user/delete/' + user.id}"  th:text="#{remove.message}"></a></td>-->
 						<td sec:authorize="hasRole('ROLE_USER')"><div>
-								<div th:if="${user.isAddFriend && user.role=='ROLE_USER'}">
+								<div th:if="${user.isAddFriend && user.role=='ROLE_USER' && !conectado.equals(user.email)}">
 
 									<button type="button" th:id="${'addButton' + user.id}"
 										class="btn btn-info">Enviar petición de amistad</button>
@@ -66,8 +66,11 @@
 
 
 								</div>
-								<div th:if="${user.role!='ROLE_USER'}">
+								<div th:if="${user.role!='ROLE_USER' && !conectado.equals(user.email)}">
 								Usuario administrador
+								</div>
+								<div th:if="${conectado.equals(user.email)}">
+								Tú
 								</div>
 						
 							</div></td>

@@ -130,6 +130,7 @@ public class UsersController {
 		}
 		model.addAttribute("usersList", users.getContent() );
 		model.addAttribute("page", users);
+		model.addAttribute("conectado", usersService.getUserEmail(principal.getName()).getEmail());
 		
 		return "user/list";
 	}

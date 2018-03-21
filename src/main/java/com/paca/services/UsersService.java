@@ -45,7 +45,9 @@ public class UsersService {
 	}
 	
 	public Page<User> getUsers(Pageable pageable, String email){
-		Page<User> users = usersRepository.findAllWithOutCurrentUser(pageable, email); 
+//		Page<User> users = usersRepository.findAllWithOutCurrentUser(pageable, email); 
+		Page<User> users = usersRepository.findAll(pageable); 
+
 		return users;
 	}	
 	
