@@ -22,6 +22,15 @@ public class UsersService {
 	@Autowired
 	private UsersRepository usersRepository;
 	
+	@Autowired
+	private FriendshipService friendshipService;
+	
+	@Autowired
+	private RequestsService requestsService;
+	
+	@Autowired 
+	private PostService postService;
+	
 	 @Autowired
 	 private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
@@ -50,6 +59,9 @@ public class UsersService {
 	}
 	
 	public void deleteUser(Long id) { 
+		requestsService.deleteUser(id);
+		friendshipService.deleteUser(id);
+		postService.deleteUser(id);
 		usersRepository.delete(id);
 	}
 
@@ -68,14 +80,6 @@ public class UsersService {
 		usersRepository.updateIsAddFriend(revised, id);	
 	}
 	
-//	public void addFriend(Long idUser1, Long idUser) {
-//		getUser(idUser).addFriend(new Friendship(getUser(idUser1), getUser(idUser)));
-//		getUser(idUser1).addFriend(new Friendship(getUser(idUser), getUser(idUser1)));
-//	}
-//
-//	public Page<User> getFriends(Pageable pageable, String email) {
-//		Page<User> users = usersRepository.findFriendOfOneUser(pageable, email); 
-//		return users;
-//	}
+
 
 }

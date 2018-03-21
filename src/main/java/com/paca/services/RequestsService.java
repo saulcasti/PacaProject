@@ -1,6 +1,7 @@
 package com.paca.services;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -47,5 +48,13 @@ public class RequestsService {
 	public void acceptRequest(Long id_request, Long idUser) {
 		friendshipService.addFriend(requestsRepository.findOtherUserIdFromRequest(id_request), idUser);
 		requestsRepository.delete(id_request);
+	}
+
+	public void deleteUser(Long id) { 
+		List<Long> id_requestUser = requestsRepository.findByUserID(id);
+		for(Long i:id_requestUser) {
+			requestsRepository.delete(i);
+		}
+
 	}
 }

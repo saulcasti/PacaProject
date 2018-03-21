@@ -1,5 +1,7 @@
 package com.paca.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -29,4 +31,10 @@ public class FriendshipService {
 		return users;
 	}
 
+	public void deleteUser(Long id) { 
+		List<Long> id_friendshipUser = friendshipRepository.findByUserId(id);
+		for(Long i:id_friendshipUser) {
+			friendshipRepository.delete(i);
+		}
+	}
 }

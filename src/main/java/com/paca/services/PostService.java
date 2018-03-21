@@ -1,5 +1,7 @@
 package com.paca.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,6 +25,14 @@ public class PostService {
 	public Page<Post> getPosts(Pageable pageable, String email) {
 		Page<Post> posts = postRepository.findAllPostByEmailAuthor(pageable, email); 
 		return posts;
+	}
+
+
+	public void deleteUser(Long id) { 
+		List<Long> id_postUser = postRepository.findByUserId(id);
+		for(Long i:id_postUser) {
+			postRepository.delete(i);
+		}
 	}
 
 
