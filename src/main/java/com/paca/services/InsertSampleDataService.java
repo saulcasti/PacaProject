@@ -79,12 +79,11 @@ public class InsertSampleDataService {
 		
 		
 		//El user1 manda peticiones a la mayoria de usuario y el user2 se la manda a éste.
-		requestService.sendRequest(user1.getId(), user2.getId());
-		requestService.sendRequest(user1.getId(), user3.getId());
-		requestService.sendRequest(user1.getId(), user4.getId());
-		requestService.sendRequest(user1.getId(), user5.getId());
-		requestService.sendRequest(user1.getId(), user6.getId());
-		requestService.sendRequest(user2.getId(), user1.getId());
+		requestService.sendRequest(user3.getId(), user3.getId());
+		requestService.sendRequest(user3.getId(), user4.getId());
+		requestService.sendRequest(user3.getId(), user5.getId());
+		requestService.sendRequest(user3.getId(), user6.getId());
+		requestService.sendRequest(user4.getId(), user3.getId());
 
 		
 		// El usuario user2 publica un post con imagen
