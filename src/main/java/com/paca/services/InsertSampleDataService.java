@@ -31,9 +31,11 @@ public class InsertSampleDataService {
 	 
 	@PostConstruct
 	public void init() {
+		
+		// Se crean los diferentes usuarios, se les asigna su contraseña y su rol
 		User user1 = new User("pedro-@hotmail.com", "Pedro", "Díaz");
 		user1.setPassword("123456");
-		user1.setRole(rolesService.getRoles()[0]);
+		user1.setRole(rolesService.getRoles()[1]);
 		
 		User user2 = new User("laPaca@gmail.com", "Paca", "Salas");
 		user2.setPassword("123456");
@@ -55,13 +57,28 @@ public class InsertSampleDataService {
 		user6.setPassword("123456");
 		user6.setRole(rolesService.getRoles()[0]);
 		
+		User user7 = new User("elJhonan@gmail.com", "Jhonan", "Del Barrio");
+		user7.setPassword("123456");
+		user7.setRole(rolesService.getRoles()[0]);
+		
+		//Único usuario administrador
+		User user8 = new User("admin@paca.es", "Admin", "Paca");
+		user8.setPassword("123456");
+		user8.setRole(rolesService.getRoles()[1]);
+		
+		
+		// Se añaden a la base de datos
 		usersService.addUser(user1);
 		usersService.addUser(user2);
 		usersService.addUser(user3);
 		usersService.addUser(user4);
 		usersService.addUser(user5);
 		usersService.addUser(user6);
+		usersService.addUser(user7);
+		usersService.addUser(user8);
 		
+		
+		//El user1 manda peticiones a la mayoria de usuario y el user2 se la manda a éste.
 		requestService.sendRequest(user1.getId(), user2.getId());
 		requestService.sendRequest(user1.getId(), user3.getId());
 		requestService.sendRequest(user1.getId(), user4.getId());
@@ -69,6 +86,8 @@ public class InsertSampleDataService {
 		requestService.sendRequest(user1.getId(), user6.getId());
 		requestService.sendRequest(user2.getId(), user1.getId());
 
+		
+		// El usuario user2 publica un post con imagen
 		Post post1 = new Post();
 		post1.setAuthor(user2);
 		post1.setDateToday();

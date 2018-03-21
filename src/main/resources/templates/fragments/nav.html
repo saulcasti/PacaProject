@@ -13,19 +13,19 @@
 			<ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
 				<li><a href="/">Home</a></li>
 				
-				<li><a href="/post/create" sec:authorize="isAuthenticated()" 
+				<li sec:authorize="hasRole('ROLE_USER')"><a href="/post/create" sec:authorize="isAuthenticated()" 
 				 th:text="#{nav.post.create}">Crear Publicación</a></li>
 				
-				<li><a href="/user/list" sec:authorize="isAuthenticated()" 
+				<li ><a href="/user/list" sec:authorize="isAuthenticated()" 
 				 th:text="#{nav.user.list}">Listado de usuarios</a></li>
 				 
-				 	<li><a href="/request/list" sec:authorize="isAuthenticated()" 
+				 	<li sec:authorize="hasRole('ROLE_USER')"><a href="/request/list" sec:authorize="isAuthenticated()" 
 				 th:text="#{nav.user.listFriendRequest}">Peticiones de amistad</a></li>
 				 
-				 <li><a href="/user/friendsList" sec:authorize="isAuthenticated()" 
+				 <li sec:authorize="hasRole('ROLE_USER')"><a href="/user/friendsList" sec:authorize="isAuthenticated()" 
 				 th:text="#{nav.user.friendsList}">Amigos</a></li>
 				 
-				  <li><a href="/post/list" sec:authorize="isAuthenticated()" 
+				  <li sec:authorize="hasRole('ROLE_USER')"><a href="/post/list" sec:authorize="isAuthenticated()" 
 				 th:text="#{nav.post.list}">Mis Posts</a></li>
 
 			</ul>
