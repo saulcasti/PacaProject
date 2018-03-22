@@ -6,7 +6,7 @@
 	<nav th:replace="fragments/nav" />
 
 	<div class="container">
-		<h2 th:text="#{user.list.users}">Usuarios</h2>
+		<h2 id="tituloUsuarios" th:text="#{user.list.users}">Usuarios</h2>
 		<form class="navbar-form" action="/user/list">
 
 			<div class="form-group">
@@ -14,7 +14,7 @@
 				<input name="searchText" type="text" class="form-control" size="50"
 					placeholder="Buscar por email o nombre del usuario">
 			</div>
-			<button type="submit" class="btn btn-default" th:text="#{user.list.search}">Buscar</button>
+			<button id="search" type="submit" class="btn btn-default" th:text="#{user.list.search}">Buscar</button>
 
 		</form>
 		
