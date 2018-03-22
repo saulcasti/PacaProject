@@ -29,10 +29,8 @@ public class PostService {
 
 
 	public void deleteUser(Long id) { 
-		List<Long> id_postUser = postRepository.findByUserId(id);
-		for(Long i:id_postUser) {
-			postRepository.delete(i);
-		}
+		postRepository.deleteByUserId(id);
+
 	}
 
 

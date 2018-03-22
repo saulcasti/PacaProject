@@ -27,7 +27,5 @@ public interface UsersRepository extends CrudRepository<User, Long>{
 	@Query("UPDATE User SET isAddFriend = ?1 WHERE id = ?2")
 	void updateIsAddFriend(boolean revised, Long id);
 
-//	@Query("SELECT f.friend FROM Friendship f where f.user.email = ?1")
-//	Page<User> findFriendOfOneUser(Pageable pageable, String email);
 
 }

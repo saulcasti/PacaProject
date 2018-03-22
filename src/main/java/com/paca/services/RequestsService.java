@@ -51,10 +51,6 @@ public class RequestsService {
 	}
 
 	public void deleteUser(Long id) { 
-		List<Long> id_requestUser = requestsRepository.findByUserID(id);
-		for(Long i:id_requestUser) {
-			requestsRepository.delete(i);
-		}
-
+		requestsRepository.deleteByUserId(id);
 	}
 }

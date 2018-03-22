@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.paca.entities.Request;
 import com.paca.entities.User;
@@ -21,6 +23,8 @@ public interface RequestRepository extends CrudRepository<Request, Long>{
 	@Query("SELECT r.transmitter.id FROM Request r WHERE r.id = ?1")
 	Long findOtherUserIdFromRequest(Long id_request);
 
-	@Query("SELECT r.id FROM Request r WHERE r.receiver.id = ?1 OR	r.transmitter.id = ?1")
-	List<Long> findByUserID(Long id);
+	@Modifying
+	@Transactional
+	@Query("DELETE FROM Request r WHERE r.receiver.id = ?1 OR 	r.transmitter.id = ?1")
+	void deleteByUserId(Long id);
 }

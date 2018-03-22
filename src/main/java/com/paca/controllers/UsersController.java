@@ -139,6 +139,8 @@ public class UsersController {
 	public String updateList(Model model, Pageable pageable, Principal principal){
 		Page<User> users = usersService.getUsers(pageable,  principal.getName());
 		model.addAttribute("usersList", users.getContent() );
+		model.addAttribute("page", users);
+		model.addAttribute("conectado", usersService.getUserEmail(principal.getName()).getEmail());
 		return "user/list :: tableUsers";
 	}
 	

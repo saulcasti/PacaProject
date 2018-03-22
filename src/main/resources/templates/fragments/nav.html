@@ -7,11 +7,10 @@
 				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<img src="/img/pacaIMG.png" height="55"  alt="logo" />
+			<a href="/"><img src="/img/pacaIMG.png" height="55"  alt="logo" /></a>
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar" style="color:BLACK;">
 			<ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
-				<li><a href="/">Home</a></li>
 				
 				<li sec:authorize="hasRole('ROLE_USER')"><a href="/post/create" sec:authorize="isAuthenticated()" 
 				 th:text="#{nav.post.create}">Crear Publicación</a></li>

@@ -20,7 +20,7 @@ public class FriendshipService {
 	
 	@Autowired
 	private UsersService usersService;
-	
+
 	public void addFriend(Long idUser1, Long idUser) {
 		usersService.getUser(idUser).addFriend(new Friendship(usersService.getUser(idUser1), usersService.getUser(idUser)));
 		usersService.getUser(idUser1).addFriend(new Friendship(usersService.getUser(idUser), usersService.getUser(idUser1)));
@@ -32,9 +32,7 @@ public class FriendshipService {
 	}
 
 	public void deleteUser(Long id) { 
-		List<Long> id_friendshipUser = friendshipRepository.findByUserId(id);
-		for(Long i:id_friendshipUser) {
-			friendshipRepository.delete(i);
-		}
+		friendshipRepository.deleteByUserId(id);
+
 	}
 }
