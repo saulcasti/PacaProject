@@ -145,7 +145,7 @@ public class UsersController {
 	}
 	
 	@RequestMapping(value="/user/{id}/isAddFriend", method=RequestMethod.GET) 
-	public String setResendTrue(Model model, @PathVariable Long id, Principal principal){
+	public String sendResquest(Model model, @PathVariable Long id, Principal principal){
 		requestsService.sendRequest(id, usersService.getUserEmail(principal.getName()).getId());
 		return "redirect:/user/list";
 	}
