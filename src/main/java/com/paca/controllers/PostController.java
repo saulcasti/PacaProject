@@ -62,7 +62,7 @@ public class PostController {
 		post = postService.getPosts(pageable, email);
 		
 		model.addAttribute("postsList", post.getContent() );
-		model.addAttribute("nameAuthor", "Mis Publicaciones");
+		model.addAttribute("nameAuthor", "#{mypost}");
 		model.addAttribute("page", post);
 		
 		return "post/list";
@@ -79,7 +79,7 @@ public class PostController {
 		post = postService.getPosts(pageable, usersService.getUser(id).getEmail());
 		
 		model.addAttribute("postsList", post.getContent() );
-		model.addAttribute("nameAuthor", "Publicaciones de " + usersService.getUser(id).getFullName());
+		model.addAttribute("nameAuthor", usersService.getUser(id).getFullName());
 		model.addAttribute("page", post);
 		return "/post/list";
 	}

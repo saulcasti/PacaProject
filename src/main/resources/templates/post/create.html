@@ -7,7 +7,7 @@
 	
 	
 	<div class="container">
-		<h2 id="crearPubli">Crea una nueva publicación</h2>
+		<h2 id="crearPubli" th:text="post.create">Crea una nueva publicación</h2>
 		
 		<form class="form-horizontal" method="post" action="/post/create"
 			th:object="${post}"  enctype="multipart/form-data">

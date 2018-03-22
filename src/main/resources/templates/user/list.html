@@ -45,7 +45,7 @@
 								<div th:if="${user.isAddFriend && user.role=='ROLE_USER' && !conectado.equals(user.email)}">
 
 									<button type="button" th:id="${'addButton' + user.id}"
-										class="btn btn-info">Enviar petición de amistad</button>
+										class="btn btn-info" th:text="#{button.sendFriendRequest}">Enviar petición de amistad</button>
 									<script th:inline="javascript">
 									/*<![CDATA[*/
 									$("#addButton[[${user.id}]]").click(function() {
@@ -61,10 +61,10 @@
 									/*]]>*/
 									</script>
 								</div>
-								<div th:if="${user.role!='ROLE_USER' && !conectado.equals(user.email)}">
+								<div th:if="${user.role!='ROLE_USER' && !conectado.equals(user.email)}" th:text="#{user.list.admin}">
 								Usuario administrador
 								</div>
-								<div th:if="${conectado.equals(user.email)}">
+								<div th:if="${conectado.equals(user.email)}" th:text="#{list.user.you}">
 								Tú
 								</div>
 						

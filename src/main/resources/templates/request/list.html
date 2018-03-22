@@ -28,7 +28,7 @@
 						<td th:text="${request.descripcion}">Mensaje</td>
 						<td><div>
 								<button type="button" th:id="${'addButton' + request.id}"
-									class="btn btn-info">Aceptar petición de amistad</button>
+									class="btn btn-info" th:text="#{request.list.accept}">Aceptar petición de amistad</button>
 								<script th:inline="javascript">
 									/*<![CDATA[*/
 									$("#addButton[[${request.id}]]").click(function() {

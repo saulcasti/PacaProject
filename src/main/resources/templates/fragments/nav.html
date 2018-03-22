@@ -46,15 +46,15 @@
 								th:text="#{language.es}">Español</span>
 						</a></li>
 					</ul></li>
-				<li sec:authorize="!isAuthenticated()"><a href="/signup" > <span
-						class="glyphicon glyphicon-user"></span> Registrate
+				<li sec:authorize="!isAuthenticated()"><a href="/signup" th:text="#{nav.signup}"> <span
+						class="glyphicon glyphicon-user" ></span > Registrate
 				</a></li>
-				<li sec:authorize="!isAuthenticated()"><a href="/login"
+				<li sec:authorize="!isAuthenticated()"><a href="/login" th:text="#{nav.login}"
 					> <span
-						class="glyphicon glyphicon-log-in"></span> Identifícate
+						class="glyphicon glyphicon-log-in" ></span > Identifícate
 				</a></li>
-				<li sec:authorize="isAuthenticated()"><a href="/logout"> <span
-						class="glyphicon glyphicon-log-out"></span> Desconectar
+				<li sec:authorize="isAuthenticated()"><a href="/logout" th:text="#{nav.logout}"> <span
+						class="glyphicon glyphicon-log-out" ></span> Desconectar
 				</a></li>
 			</ul>
 		</div>

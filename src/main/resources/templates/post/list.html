@@ -6,7 +6,9 @@
 	<nav th:replace="fragments/nav" />
 
 	<div class="container">
-		<h2 id="listarPubli" th:text="${nameAuthor}">Publicaciones</h2>
+		<h2 id="listarPubli" th:text="#{mypost}" th:if="${nameAuthor == '#{mypost}'}">Publicaciones</h2>
+		<h2 id="listarPubli" th:text="#{otherpost} + ${nameAuthor}" th:if="${nameAuthor != '#{mypost}'}">Publicaciones</h2>
+		
 
 		<div class="table-responsive">
 			<table class="table table-hover" th:fragment="tablePosts"
