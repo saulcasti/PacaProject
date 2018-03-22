@@ -33,7 +33,7 @@ public class InsertSampleDataService {
 	public void init() {
 		
 		// Se crean los diferentes usuarios, se les asigna su contraseña y su rol
-		User user1 = new User("pedro-@hotmail.com", "Pedro", "Díaz");
+		User user1 = new User("elPaco-@hotmail.com", "Paco", "Díaz");
 		user1.setPassword("123456");
 		user1.setRole(rolesService.getRoles()[1]);
 		
