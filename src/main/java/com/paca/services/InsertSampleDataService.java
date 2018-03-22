@@ -20,9 +20,6 @@ public class InsertSampleDataService {
 	private RequestsService requestService;
 	
 	@Autowired
-	private FriendshipService friendshipService;
-	
-	@Autowired
 	private PostService postService;
 	
 	 @Autowired

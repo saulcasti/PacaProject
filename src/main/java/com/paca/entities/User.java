@@ -3,7 +3,6 @@ import java.util.Set;
 
 import javax.persistence.*;
 
-import com.paca.services.RolesService;
 //A collection that contains no duplicate elements 
 
 @Entity

@@ -25,8 +25,6 @@ public class SignUpFormValidator implements Validator{
 		if (user.getEmail().length() < 5 || user.getEmail().length() > 24) {
 			errors.rejectValue("email", "Error.signup.email.length");
 		}
-		int a = user.getEmail().split("@").length;
-		int b = user.getEmail().split(".").length;
 		if (user.getEmail().split("@").length != 2) {
 			errors.rejectValue("email", "Error.signup.email.format");
 		}
