@@ -102,7 +102,6 @@ public class PostController {
 					StandardCopyOption.REPLACE_EXISTING);
 			post.setImageURL("/img/post/" + fileName); 
 		} catch (IOException e) { 
-//			e.printStackTrace();
 		}
 
 		post.setAuthor(usersService.getUserEmail(principal.getName()));

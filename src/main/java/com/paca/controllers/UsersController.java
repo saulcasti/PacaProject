@@ -49,15 +49,7 @@ public class UsersController {
 	 private RolesService rolesService;
 	 
 	 
-	 
-//	 @RequestMapping(value="/admin/login", method = RequestMethod.POST)
-//	 public String loginAdmin(Model model, @RequestParam String username,  
-//			 @RequestParam String password) {
-//		 
-//		 securityService.autoLogin(username, password);
-//		 
-//		 return "admin/login";
-//	 }
+	
 	 @RequestMapping(value="/admin/login", method = RequestMethod.GET)
 	 public String loginAdmin(Model model, @RequestParam(required=false) String error) {
 			
