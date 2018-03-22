@@ -55,16 +55,11 @@
 											var urlUpdate = '/user/list/update';
 											if( numberPage != null){
 												urlUpdate += "?page="+numberPage[0];
-											}
-											
-											$("#tableUsers").load(urlUpdate);
-											
-																					})
+											}											
+											$("#tableUsers").load(urlUpdate);											})
 									});
 									/*]]>*/
 									</script>
-
-
 								</div>
 								<div th:if="${user.role!='ROLE_USER' && !conectado.equals(user.email)}">
 								Usuario administrador

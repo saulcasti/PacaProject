@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.paca.entities.Post;
+import com.paca.services.FriendshipService;
 import com.paca.services.PostService;
 import com.paca.services.UsersService;
 import com.paca.validators.CreatePostFormValidator;
@@ -36,6 +37,9 @@ public class PostController {
 	
 	@Autowired
 	private UsersService usersService;
+	
+	@Autowired
+	private FriendshipService friendshipService;
 	
 	@Autowired
 	private CreatePostFormValidator createPostFormValidator;
@@ -65,8 +69,11 @@ public class PostController {
 	}
 
 	@RequestMapping(value="/post/{id}/list", method=RequestMethod.GET) 
-	public String setResendTrue(Model model, @PathVariable Long id , Pageable pageable){
+	public String setResendTrue(Model model, @PathVariable Long id , Pageable pageable, Principal principal){
 		
+		if(!friendshipService.areFriends(id, usersService.getUserEmail(principal.getName()).getId())) {
+			return "redirect:/user/friendsList";
+		}
 		Page<Post> post = new PageImpl<Post>(new LinkedList<Post>());
 		
 		post = postService.getPosts(pageable, usersService.getUser(id).getEmail());

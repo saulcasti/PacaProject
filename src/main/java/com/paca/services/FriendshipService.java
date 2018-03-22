@@ -35,4 +35,10 @@ public class FriendshipService {
 		friendshipRepository.deleteByUserId(id);
 
 	}
+
+	
+	public boolean areFriends(Long id_other, Long id_user_principal) {
+		List<Long> filas = friendshipRepository.areFriend(id_other, id_user_principal);
+		return filas.size()>0;
+	}
 }
