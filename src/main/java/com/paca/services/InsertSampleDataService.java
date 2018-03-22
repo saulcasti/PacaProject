@@ -39,7 +39,7 @@ public class InsertSampleDataService {
 		
 		User user2 = new User("laPaca@gmail.com", "Paca", "Salas");
 		user2.setPassword("123456");
-		user2.setRole(rolesService.getRoles()[1]);
+		user2.setRole(rolesService.getRoles()[0]);
 		
 		User user3 = new User("laVero@gmail.com", "Vero", "Ortíz");
 		user3.setPassword("123456");
@@ -79,10 +79,11 @@ public class InsertSampleDataService {
 		
 		
 		//El user1 manda peticiones a la mayoria de usuario y el user2 se la manda a éste.
-		requestService.sendRequest(user3.getId(), user3.getId());
+		requestService.sendRequest(user3.getId(), user7.getId());
 		requestService.sendRequest(user3.getId(), user4.getId());
 		requestService.sendRequest(user3.getId(), user5.getId());
 		requestService.sendRequest(user3.getId(), user6.getId());
+//		requestService.sendRequest(user3.getId(), user2.getId());
 		requestService.sendRequest(user4.getId(), user3.getId());
 
 		
